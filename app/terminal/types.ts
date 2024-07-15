@@ -11,7 +11,8 @@ export interface TerminalPushToHistoryWithDelayProps {
 export interface TerminalProps {
     history: TerminalHistory;
     promptLabel: String;
-    commands: any;
-    notACommand: (command: String) => Promise<void>;
+    commands: { [id: string] : () => Promise<void> };
+    beforeCommands: (command: String) => Promise<void>;
+    notACommandHandler: (command: String) => Promise<void>;
 };
 

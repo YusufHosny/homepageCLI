@@ -10,7 +10,8 @@ export const Terminal = forwardRef(
       history,
       promptLabel,
       commands,
-      notACommand
+      beforeCommands,
+      notACommandHandler
     } = props;
 
     const inputRef = useRef<HTMLInputElement>();
@@ -45,15 +46,16 @@ export const Terminal = forwardRef(
       (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
           const commandToExecute = commands?.[input.toLowerCase()];
+          beforeCommands(input);
           if (commandToExecute) {
             commandToExecute?.();
           } else {
-            notACommand(input);
+            notACommandHandler(input);
           }
           setInputValue('');
         }
       },
-      [commands, input, notACommand]
+      [commands, input, notACommandHandler]
     );
 
     return (

@@ -14,7 +14,7 @@ function Core() {
   } = useTerminal();
 
 
-
+  const promptLabel = "/info/yusuf>";
 
   const commands = useMemo(() => ({
     'help': async () => {
@@ -82,10 +82,18 @@ function Core() {
     },
   }), [pushToHistory, resetTerminal]);
 
-  const notACommand = async (command: String) => {
+  const notACommandHandler = async (command: String) => {
     await pushToHistory(
       <div>
-        <strong>{command} is not a command</strong> Try help.
+        <strong>{command} is not a command.</strong> Try help.
+      </div>
+      );
+  }
+
+  const beforeCommands = async (command: String) => {
+    await pushToHistory(
+      <div>
+        {promptLabel}    {command}
       </div>
       );
   }
@@ -95,9 +103,10 @@ function Core() {
       <Terminal
         history={history}
         ref={setTerminalRef}
-        promptLabel={"/info/yusuf>"}
+        promptLabel={promptLabel}
         commands={commands}
-        notACommand={notACommand}
+        beforeCommands={beforeCommands}
+        notACommandHandler={notACommandHandler}
       />
     </div>
   );
