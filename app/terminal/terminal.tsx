@@ -55,7 +55,7 @@ export const Terminal = forwardRef(
           setInputValue('');
         }
       },
-      [commands, input, notACommandHandler]
+      [beforeCommands, commands, input, notACommandHandler]
     );
 
     return (
