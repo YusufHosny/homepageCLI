@@ -64,7 +64,7 @@ function Core() {
     },
     'cv': async () => {
       pushToHistory(
-          <a href="/cv.pdf">
+          <a download href="/cv.pdf">
               You can view my CV here.
           </a>
           );
