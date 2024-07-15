@@ -23,8 +23,7 @@ function Core() {
     },
     'introduction': async () => {
       pushToHistory(
-          "Hello, I'm Yusuf Hussein, a student of 'Engineering Technology - Electronics and ICT' in KU Leuven's Group T Campus. I am passionate about \
-          learning more about all things software, hardware, and more."
+          "Hello, I'm Yusuf Hussein, a student of 'Engineering Technology - Electronics and ICT' in KU Leuven's Group T Campus. I am passionate about learning more about all things software, hardware, and more."
           );
     },
     'education': async () => {
