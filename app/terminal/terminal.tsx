@@ -16,6 +16,8 @@ export const Terminal = forwardRef(
 
     const inputRef = useRef<HTMLInputElement>();
     const [input, setInputValue] = useState<string>('');
+    const [inputHistory, setInputHistory] = useState<string[]>([]);
+    const [inputHistoryIndex, setInputHistoryIndex] = useState<number>(-1);
 
     /**
      * Focus on the input whenever we render the terminal or click in the terminal
@@ -52,10 +54,20 @@ export const Terminal = forwardRef(
           } else {
             notACommandHandler(input);
           }
-          setInputValue('');
+          setInputHistory([input, ...inputHistory]);
+          setInputHistoryIndex(-1);
+          setInputValue("");
+        }
+        else if (e.key == "ArrowUp" && inputHistoryIndex < inputHistory.length-1) {
+          setInputHistoryIndex(inputHistoryIndex+1);
+          setInputValue(inputHistory[inputHistoryIndex+1]);
+        }
+        else if (e.key == "ArrowDown" && inputHistoryIndex > 0) {
+          setInputHistoryIndex(inputHistoryIndex-1);
+          setInputValue(inputHistory[inputHistoryIndex-1]); 
         }
       },
-      [beforeCommands, commands, input, notACommandHandler]
+      [beforeCommands, commands, input, inputHistory, inputHistoryIndex, notACommandHandler]
     );
 
     return (
