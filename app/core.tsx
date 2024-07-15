@@ -66,10 +66,7 @@ function Core() {
     'cv': async () => {
       pushToHistory(
           <Link 
-          href="/cv.pdf"
-          locale={false}
-          rel="noopener noreferrer"
-          target="_blank"
+          href="/CV.pdf"
           >
               You can view my CV here.
           </Link>
