@@ -66,7 +66,7 @@ function Core() {
     'cv': async () => {
       pushToHistory(
           <Link 
-          href="/CV.pdf"
+          href="https://drive.google.com/file/d/1FSCvrsojw5X68WUNzcjk2DjScZc39OS9/view?usp=sharing"
           >
               You can view my CV here.
           </Link>
